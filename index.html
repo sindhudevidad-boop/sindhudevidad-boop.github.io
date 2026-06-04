@@ -1,10 +1,576 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Sindhu Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerXcelerator | Career Readiness Ecosystem</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid var(--accent);
+            color: #60a5fa;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Core Focus / Positioning */
+        .identity-section {
+            max-width: 1200px;
+            margin: -4rem auto 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .identity-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+            border-top: 4px solid var(--accent);
+        }
+
+        .identity-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Sections General */
+        .section-padding {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.1rem;
+        }
+
+        /* Audience Grid */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .audience-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            transition: transform 0.3s;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .audience-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .audience-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        /* Interactive Tabs System for Services */
+        .tabs-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .tabs-container {
+                flex-direction: row;
+            }
+        }
+
+        .tab-menu {
+            background: #f1f5f9;
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            min-width: 280px;
+        }
+
+        @media (min-width: 768px) {
+            .tab-menu {
+                flex-direction: column;
+                overflow-x: visible;
+            }
+        }
+
+        .tab-btn {
+            padding: 1.25rem;
+            border: none;
+            background: none;
+            text-align: left;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .tab-btn {
+                border-bottom: none;
+                border-left: 4px solid transparent;
+                white-space: normal;
+            }
+        }
+
+        .tab-btn.active {
+            background: var(--card-bg);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .tab-content {
+            padding: 3rem;
+            flex: 1;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tab-content .purpose {
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .feature-list li i {
+            color: #10b981;
+            margin-top: 0.25rem;
+        }
+
+        .outcome-box {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+        }
+
+        .outcome-box h5 {
+            color: #065f46;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* University Infrastructure Section */
+        .uni-section {
+            background: #0f172a;
+            color: white;
+        }
+
+        .uni-section .section-title {
+            color: white;
+        }
+
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .uni-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .uni-card h3 {
+            color: #38bdf8;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to My Portfolio</h1>
-<p>Hello, I'm Sindhu.</p>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo"><i class="fa-solid fa-bolt"></i> Career<span>Xcelerator</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#audience">Who It's For</a></li>
+                    <li><a href="#services">Core Services</a></li>
+                    <li><a href="#universities">Universities</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="hero-container">
+            <span class="badge">Hiring Preparation Ecosystem</span>
+            <h1>Readiness Before Applications</h1>
+            <p>A structured framework built around measurable capability, true interview confidence, and targeted alignment to get candidates genuinely job-ready for the reality of hiring.</p>
+        </div>
+    </section>
+
+    <section class="identity-section">
+        <div class="identity-card">
+            <h3><i class="fa-solid fa-eye" style="color:var(--accent)"></i> Our Vision</h3>
+            <p>To build a generation of candidates who are prepared with absolute clarity, verified capability, confidence, and credibility before entering the hiring pipeline.</p>
+        </div>
+        <div class="identity-card">
+            <h3><i class="fa-solid fa-bullseye" style="color:var(--accent)"></i> Our Positioning</h3>
+            <p>Traditional job portals focus entirely on listing job links. CareerXcelerator focuses strictly on fixing candidate readiness so you can actually win those opportunities.</p>
+        </div>
+    </section>
+
+    <section class="section-padding" id="audience">
+        <div class="container">
+            <h2 class="section-title">Designed For True Career Progression</h2>
+            <p class="section-subtitle">Bridging the critical gap between academic education and modern employer expectations.</p>
+            
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Students & Grads</h3>
+                    <p>Gain absolute role clarity, establish base readiness, and confidently target high-value placements or early internships.</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>Early Professionals</h3>
+                    <p>Systematically eliminate hidden skill gaps, upgrade resume trust, and overcome aggressive market competition.</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fa-solid fa-shuffle"></i>
+                    <h3>Career Switchers</h3>
+                    <p>Accurately map cross-domain requirements, trace capability gaps, and execute realistic transitions seamlessly.</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <h3>IT & Non-IT Paths</h3>
+                    <p>Dedicated alignment across both technical landscapes and deep domain fields like Analytics, Operations, or Finance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background:#f1f5f9;" id="services">
+        <div class="container">
+            <h2 class="section-title">The Six Core Services</h2>
+            <p class="section-subtitle">A multi-layered system designed to eliminate random, guesswork-driven preparation.</p>
+
+            <div class="tabs-container">
+                <div class="tab-menu">
+                    <button class="tab-btn active" onclick="openTab(event, 'know-yourself')"><i class="fa-solid fa-compass"></i> 1. Know Yourself Better</button>
+                    <button class="tab-btn" onclick="openTab(event, 'career-track')"><i class="fa-solid fa-route"></i> 2. Career Track</button>
+                    <button class="tab-btn" onclick="openTab(event, 'interview-prepx')"><i class="fa-solid fa-comments"></i> 3. Interview PrepX</button>
+                    <button class="tab-btn" onclick="openTab(event, 'simulator')"><i class="fa-solid fa-desktop"></i> 4. Interview Simulator</button>
+                    <button class="tab-btn" onclick="openTab(event, 'resume-builder')"><i class="fa-solid fa-file-invoice"></i> 5. AI Resume Builder</button>
+                    <button class="tab-btn" onclick="openTab(event, 'activation')"><i class="fa-solid fa-rocket"></i> 6. Career Activation</button>
+                </div>
+
+                <div id="know-yourself" class="tab-content active">
+                    <h3>Know Yourself Better</h3>
+                    <p class="purpose">Purpose: Establishing Direction Before Preparation</p>
+                    <p>Prevents running after wrong trends by evaluating metrics cleanly upfront to discover where true underlying career fit lies.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Discover matching roles based on profile, strengths, and background.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Map realistic industry entry vectors across IT or Non-IT environments.</li>
+                    </ul>
+                    <div class="outcome-box">
+                        <h5>Key Outcome</h5>
+                        <p>Total directional confidence, smarter preparation choices, and targeted career path alignment.</p>
+                    </div>
+                </div>
+
+                <div id="career-track" class="tab-content">
+                    <h3>Career Track</h3>
+                    <p class="purpose">Purpose: The Central Readiness & Evaluation Engine</p>
+                    <p>A comprehensive system engineered to continuously analyze profile criteria against actual workplace demands.</p>
+                    <ul class="feature-list">
+                        <li><strong>Gap Analysis:</strong> Cross-references live employer parameters to reveal skills, tools, and knowledge deficiencies.</li>
+                        <li><strong>Learning Path:</strong> Customized execution tracts focused strictly on operational role execution capabilities.</li>
+                        <li><strong>AI Mentor:</strong> 24/7 ongoing evaluation support framework tracking real performance curves.</li>
+                        <li><strong>Micro Credentials:</strong> Objective-driven micro-credentials to validate actual core competencies.</li>
+                    </ul>
+                    <div class="outcome-box">
+                        <h5>Key Outcome</h5>
+                        <p>Transforms traditional, fragmented studying into an optimized path built directly on verifiable capabilities.</p>
+                    </div>
+                </div>
+
+                <div id="interview-prepx" class="tab-content">
+                    <h3>Interview PrepX</h3>
+                    <p class="purpose">Purpose: Mastering Communication and Articulation</p>
+                    <p>Bridges the massive gap between having functional skill comprehension and successfully presenting it out loud.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Deep behavioral framework prep and structured technical answer models.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Formulate structured project details smoothly under high-stakes setups.</li>
+                    </ul>
+                    <div class="outcome-box">
+                        <h5>Key Outcome</h5>
+                        <p>Eliminates delivery anxiety while training clean response structures to fit corporate expectations.</p>
+                    </div>
+                </div>
+
+                <div id="simulator" class="tab-content">
+                    <h3>Interview Simulator</h3>
+                    <p class="purpose">Purpose: Normalizing High-Pressure Environments</p>
+                    <p>Recreates interactive workplace hiring checkpoints utilizing robust simulated testing matrices.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Interactive modules covering telephonic, tech panel, and specialized domain environments.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Comprehensive real-time analysis of language pacing, structural clarity, and content accuracy.</li>
+                    </ul>
+                    <div class="outcome-box">
+                        <h5>Key Outcome</h5>
+                        <p>Turns terrifying, high-stress live interviews into familiar, predictable milestones.</p>
+                    </div>
+                </div>
+
+                <div id="resume-builder" class="tab-content">
+                    <h3>AI Resume Builder</h3>
+                    <p class="purpose">Purpose: Designing Authentic, Credible Profiles</p>
+                    <p>Focuses directly on building verifiable resume assets built around actual proven credentials instead of bloated buzzwords.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Locks claims safely to checked skill achievements.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Creates distinct formatting schemas specialized for IT vs Non-IT screening filters.</li>
+                    </ul>
+                    <div class="outcome-box">
+                        <h5>Key Outcome</h5>
+                        <p>Unlocks higher screening conversion through verified employer trust profiles.</p>
+                    </div>
+                </div>
+
+                <div id="activation" class="tab-content">
+                    <h3>Career Activation</h3>
+                    <p class="purpose">Purpose: Precision Matching Over Spammed Submissions</p>
+                    <p>Halts wasteful, exhausting application practices by carefully aligning current readiness milestones with the right open paths.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Strategically assigns tailored pipeline pathways when score metrics clear targets.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Prioritizes specialized experiential tracks and early career onboarding options.</li>
+                    </ul>
+                    <div class="outcome-box">
+                        <h5>Key Outcome</h5>
+                        <p>Massively enhanced conversion efficiency by shifting focus from application volume to application readiness.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding uni-section" id="universities">
+        <div class="container">
+            <h2 class="section-title">Institutional Readiness Infrastructure</h2>
+            <p class="section-subtitle" style="color: #94a3b8;">Powering campus placement metrics by converting fundamental academic curricula into industry hiring results.</p>
+            
+            <div class="uni-grid">
+                <div class="uni-card">
+                    <h3>Scalable Support</h3>
+                    <p>Provides institutional frameworks to track individual student readiness lines simultaneously and with complete data transparency.</p>
+                </div>
+                <div class="uni-card">
+                    <h3>Employer Confidence</h3>
+                    <p>Attract top hiring bodies by backing student pipelines with robust tracking, project portfolios, and micro-credentials.</p>
+                </div>
+                <div class="uni-card">
+                    <h3>Hiring Conversion</h3>
+                    <p>Significantly increases overall placement ratios by aligning students with paths where they show documented competitive advantage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CareerXcelerator Ecosystem. Built for Structured Readiness and Higher Hiring Conversion.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Hide all tab content boxes
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Remove active style state from all buttons
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // Show target container and tag active button styling
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
