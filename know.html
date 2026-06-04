@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Us Better | Interview Intelligence Platform</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #0b132b;
+            --secondary: #1c2541;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-dark: #020617;
+            --card-bg: #0f172a;
+            --border-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(11, 19, 43, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 7rem 2rem 5rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--accent);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* The Data Moat Banner */
+        .moat-banner {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .moat-box {
+            background: linear-gradient(90deg, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 1) 100%);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .moat-box i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .moat-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .moat-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Sections General */
+        .section-padding {
+            padding: 6rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            font-size: 1.1rem;
+        }
+
+        /* Philosophy Grid */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .philo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .philo-card.negative h4 {
+            color: #ef4444;
+        }
+
+        .philo-card.positive h4 {
+            color: var(--accent);
+        }
+
+        .philo-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .philo-card ul {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        .philo-card ul li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Architecture Section Tabs */
+        .arch-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .arch-container {
+                flex-direction: row;
+            }
+        }
+
+        .arch-menu {
+            background: #0b132b;
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            min-width: 320px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 768px) {
+            .arch-menu {
+                flex-direction: column;
+                overflow-x: visible;
+            }
+        }
+
+        .arch-btn {
+            padding: 2rem 1.5rem;
+            border: none;
+            background: none;
+            text-align: left;
+            width: 100%;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        @media (min-width: 768px) {
+            .arch-btn {
+                border-bottom: none;
+                border-left: 4px solid transparent;
+            }
+        }
+
+        .arch-btn.active {
+            background: rgba(16, 185, 129, 0.05);
+            color: var(--text-main);
+            border-color: var(--accent);
+        }
+
+        .arch-btn h4 {
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .arch-btn p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .arch-content {
+            padding: 4rem 3rem;
+            flex: 1;
+            display: none;
+        }
+
+        .arch-content.active {
+            display: block;
+        }
+
+        .layer-tag {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .arch-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 8px;
+        }
+
+        .feature-box h5 {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* User Journey Map */
+        .journey-line {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .journey-line {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .journey-step {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem auto;
+        }
+
+        /* Table Styling */
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: #0b132b;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-td {
+            color: var(--accent);
+            font-weight: 600;
+            background: rgba(16, 185, 129, 0.02);
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo"><i class="fa-solid fa-shield-halved"></i> Know Us<span>Better</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#journey">User Journey</a></li>
+                    <li><a href="#differentiation">Differentiation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="vision">
+        <div class="hero-container">
+            <span class="badge">Powered by Agentic RAG AI Layer</span>
+            <h1>Reveal How Companies <span>Actually Hire</span></h1>
+            <p>Moving past generic crowdsourced web opinions. Access evidence-based intelligence built directly from exclusive proprietary sets of real corporate interview pipelines.</p>
+        </div>
+    </section>
+
+    <div class="moat-banner">
+        <div class="moat-box">
+            <i class="fa-solid fa-database"></i>
+            <div class="moat-text">
+                <h4>Our Proprietary Data Moat</h4>
+                <p>While standard platforms rely on public forums, our system processes raw interview transcripts into unreplicable structural data assets that grow more robust every single day.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Grounded in Raw Reality</h2>
+            <p class="section-subtitle">Why assumption-based, recycled web-blog frameworks constantly fail candidates in modern landscapes.</p>
+            
+            <div class="philosophy-grid">
+                <div class="philo-card negative">
+                    <h4><i class="fa-solid fa-circle-xmark"></i> What It Is Not</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-minus"></i> No superficial blog content</li>
+                        <li><i class="fa-solid fa-minus"></i> No recycled internet answers</li>
+                        <li><i class="fa-solid fa-minus"></i> No hallucinatory generic AI trends</li>
+                    </ul>
+                </div>
+                <div class="philo-card positive">
+                    <h4><i class="fa-solid fa-circle-check"></i> What We Enforce</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Verifiable interview logs</li>
+                        <li><i class="fa-solid fa-check"></i> Real operational patterns</li>
+                        <li><i class="fa-solid fa-check"></i> Authentic signal tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="architecture">
+        <div class="container">
+            <h2 class="section-title">Platform Architecture</h2>
+            <p class="section-subtitle">Three interconnected intelligence tiers processing complex raw data into immediate clarity.</p>
+
+            <div class="arch-container">
+                <div class="arch-menu">
+                    <button class="arch-btn active" onclick="openArchLayer(event, 'layer1')">
+                        <h4>1. Company Intelligence</h4>
+                        <p>High-level behavioral & evaluation tracking</p>
+                    </button>
+                    <button class="arch-btn" onclick="openArchLayer(event, 'layer2')">
+                        <h4>2. Interview Intelligence</h4>
+                        <p>Granular role-specific competency maps</p>
+                    </button>
+                    <button class="arch-btn" onclick="openArchLayer(event, 'layer3')">
+                        <h4>3. Agentic AI Copilot</h4>
+                        <p>Interactive contextual search sandbox</p>
+                    </button>
+                </div>
+
+                <div id="layer1" class="arch-content active">
+                    <span class="layer-tag">Structural Tier</span>
+                    <h3>Company Intelligence Layer</h3>
+                    <p>Maps systemic processing pathways across active corporations before a developer touches an operational terminal setup.</p>
+                    <div class="grid-2">
+                        <div class="feature-box">
+                            <h5>Round Outlines</h5>
+                            <p>Break down structures spanning system designs, management metrics, and functional evaluations.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h5>Evaluation Insights</h5>
+                            <p>Pinpoint specific focus signals individual targets prioritize throughout active vetting windows.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="layer2" class="arch-content">
+                    <span class="layer-tag">Granular Tier</span>
+                    <h3>Role-Level Intelligence</h3>
+                    <p>Isolates targeted competencies specific to target fields instead of blanket operational reviews.</p>
+                    <div class="grid-2">
+                        <div class="feature-box">
+                            <h5>Question Patterns</h5>
+                            <p>Analyze verified operational problem trends derived across deep structural profiles.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h5>Confidence Index</h5>
+                            <p>Evaluate accuracy margins dynamically built utilizing our localized analytics network metrics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="layer3" class="arch-content">
+                    <span class="layer-tag">Interactive Tier</span>
+                    <h3>Agentic Preparation Copilot</h3>
+                    <p>An advanced localized sandbox engine capable of managing personalized contextual preparation roadmaps.</p>
+                    <div class="grid-2">
+                        <div class="feature-box">
+                            <h5>Adaptive Routing</h5>
+                            <p>Tailor suggestions instantly mapped against current historical targets, skills, or unique goals.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h5>Zero Hallucination</h5>
+                            <p>Outputs filter uniquely from locked data stores rather than public web scrapers.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="journey">
+        <div class="container">
+            <h2 class="section-title">The Preparation Lifecycle</h2>
+            <p class="section-subtitle">How users move from market confusion to definitive validation frameworks step-by-step.</p>
+            
+            <div class="journey-line">
+                <div class="journey-step">
+                    <div class="step-num">1</div>
+                    <h4>Search Firm</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Audit the exact corporate target to parse overarching organizational frameworks.</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-num">2</div>
+                    <h4>Map the Role</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Isolate specific functional demands and underlying competency marks.</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-num">3</div>
+                    <h4>Deploy Agent</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Engage interactive prompts to run through highly realistic sandbox tests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="differentiation">
+        <div class="container">
+            <h2 class="section-title">The Structural Difference</h2>
+            <p class="section-subtitle">How Know Us Better departs from legacy platforms built on subjective feedback loops.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Vectors</th>
+                            <th>Legacy Web Platforms</th>
+                            <th>Know Us Better Framework</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Data Foundations</strong></td>
+                            <td>Crowdsourced opinion boards / Public web dumps</td>
+                            <td class="highlight-td">Verified exclusive interview transcript pipelines</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Insight Integrity</strong></td>
+                            <td>Subjective reviews / Generic templates</td>
+                            <td class="highlight-td">Evidence-driven metrics & specific signal scoring</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Preparation Methodology</strong></td>
+                            <td>Static text / Scattered question links</td>
+                            <td class="highlight-td">Context-aware Agentic RAG guided simulations</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Know Us Better Intelligence Systems. All rights reserved. Powered by Agentic RAG.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openArchLayer(evt, layerId) {
+            var i, archcontent, archlinks;
+            
+            archcontent = document.getElementsByClassName("arch-content");
+            for (i = 0; i < archcontent.length; i++) {
+                archcontent[i].style.display = "none";
+                archcontent[i].classList.remove("active");
+            }
+            
+            archlinks = document.getElementsByClassName("arch-btn");
+            for (i = 0; i < archlinks.length; i++) {
+                archlinks[i].classList.remove("active");
+            }
+            
+            document.getElementById(layerId).style.display = "block";
+            document.getElementById(layerId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
